@@ -18,4 +18,5 @@ jobs:
       - name: Publish package
         run: ./gradlew publish
         env:
-          GITHUB_TOKEN: ${{ secrets.DDD4K_TOKEN }}
+          DDD4K_ACTOR: ${{ secrets.DDD4K_ACTOR }}
+          DDD4K_TOKEN: ${{ secrets.DDD4K_TOKEN }}
