@@ -3,9 +3,6 @@ plugins {
     alias(libs.plugins.maven.publish) apply true
 }
 
-group = "org.github.swszz"
-version = "0.1.0"
-
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(21)
@@ -16,12 +13,20 @@ java {
 publishing {
     repositories {
         maven {
-            name = "ddd4k"
+            name = rootProject.name
             url = uri("https://maven.pkg.github.com/swszz/ddd4k")
             credentials {
                 username = System.getenv("DDD4K_ACTOR")
                 password = System.getenv("DDD4K_TOKEN")
             }
+        }
+    }
+    publications {
+        create<MavenPublication>(rootProject.name) {
+            groupId = "org.github.swszz"
+            artifactId = rootProject.name
+            version = System.getenv("VERSION")
+            from(components["java"])
         }
     }
 }

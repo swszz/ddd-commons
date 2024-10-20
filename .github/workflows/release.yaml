@@ -21,3 +21,4 @@ jobs:
         env:
           DDD4K_ACTOR: ${{ secrets.DDD4K_ACTOR }}
           DDD4K_TOKEN: ${{ secrets.DDD4K_TOKEN }}
+          VERSION: ${{ github.event.release.tag_name }}
