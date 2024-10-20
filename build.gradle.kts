@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.kotlin.jvm) apply true
+    alias(libs.plugins.maven.publish) apply true
 }
 
 group = "org.github.swszz"
@@ -12,6 +13,18 @@ java {
     }
 }
 
+publishing {
+    repositories {
+        maven {
+            name = "ddd4k"
+            url = uri("https://maven.pkg.github.com/swszz/ddd4k")
+            credentials {
+                username = System.getenv("DDD4K_ACTOR")
+                password = System.getenv("DDD4K_TOKEN")
+            }
+        }
+    }
+}
 repositories {
     mavenCentral()
 }
